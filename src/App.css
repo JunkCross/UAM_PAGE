@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background: #f8fafc;
+}
+
+.container{
+  display: flex;
+  /*background-color: aquamarine;*/
+}
+
+main{
+  width: 100%;
+  padding: 20px;
+}
+
+.sidebar{
+  /*background: skyblue;*/
+  height: 100vh;
+  width: 300px;
+}
+
+.top_seccion{
+  display: flex;
+  justify-content:left;
+  align-items:center;
+  padding: 25px 20px;
+  gap: 80px;
+}
+
+.logo{
+  font-size: 30px;
+  border-radius: 15px;
+  /*background: red;*/
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  gap: 20px;
+}
+
+.bars{
+  display: flex;
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.link{
+  display: flex;
+  color: #4d7486;
+  padding: 18px 28px;
+  gap: 20px;
+  transition: all 0.5s;
+  /*align-items: center;*/
+}
+
+.link:hover{
+  background: #cdd5da;
+  /*color: #fff;*/
+  border-radius: 30px;
+  transition: all 0.5s;
+}
+
+.icon, .link_text{
+  font-size: 19px;
+  background: #4d748600;
+}
+
+
+.experimentos-container{
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: end;
+
+  margin-bottom: 20px;
+}
+
+.nuevo-experimento-btn {
+  padding: 10px 20px;
+  background-color: #4d7486;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.search-container {
+  /*position: relative;
+  justify-content: center;*/
+  display: flex; /* Agrega esto */
+  align-items: center; /* Agrega esto */
+  width: 100%;
+  /*padding: 20px 50px;*/
+  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-right: 50px;
+  gap: 15px;
+}
+
+.search-input {
+  /*width: 100%;*/
+  padding: 12px;
+  flex-grow: 1; /* Agrega esto para que el input ocupe el espacio restante */
+  /*padding-left: 35px;
+  padding-right: 15px;*/
+  font-size: 16px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  position:relative;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #ccc;
+}
+
+.experimentos-list {
+  margin-top: 20px;
+}
+
+.experimento-item {
+  padding: 15px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  /*background-color: #ffffff;*/
+}

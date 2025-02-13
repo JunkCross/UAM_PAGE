@@ -1,0 +1,494 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dashboard-container h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3498db;
+}
+
+.dashboard-container p {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.charts-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+}
+
+.chart-container {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e1e8ed;
+    margin-bottom: 20px;
+    min-width: 300px;
+    height: auto;
+    min-height: 400px;
+}
+
+.chart-container:hover {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.chart-container h3 {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-size: clamp(1em, 2.5vw, 1.3em);
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Estilos para los gráficos */
+.chart-container canvas {
+    min-height: unset;
+    max-height: unset;
+    width: 100% !important;
+}
+
+/* Estilos para la leyenda */
+.chart-container .chartjs-legend {
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 10px;
+    }
+
+    .time-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sampling-indicator {
+        align-self: center;
+    }
+
+    .chart-container {
+        min-width: 250px;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .time-controls {
+        justify-content: center;
+    }
+
+    .chart-container {
+        min-width: 300px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    }
+}
+
+/* Estilos para los controles de tiempo si los agregas después */
+.time-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+.time-controls button {
+    padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 15px);
+    border: none;
+    border-radius: 4px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: clamp(0.8em, 2vw, 1em);
+    white-space: nowrap;
+}
+
+.time-controls button:hover {
+    background: #2980b9;
+}
+
+/* Estilos para el estado de carga */
+.loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: #e74c3c;
+    padding: 15px;
+    background: #fdf0ed;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #e74c3c;
+}
+
+.sensor-data-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+    height: auto;
+    margin-top: 20px;
+}
+
+.current-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    height: 100px;
+}
+
+.current-value .value {
+    font-size: clamp(1.5em, 4vw, 2em);
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.current-value .unit {
+    font-size: clamp(0.8em, 2vw, 1em);
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 200px;
+    width: 100%;
+}
+
+.gauge-wrapper {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Estilos para modo pantalla completa */
+.charts-grid.fullscreen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+.charts-grid.fullscreen .chart-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 50%,
+        #3498db 50%,
+        #3498db 100%
+    );
+    cursor: nw-resize;
+    z-index: 1000;
+}
+
+.charts-grid.fullscreen .chart-container {
+    position: relative;
+    z-index: 1;
+    height: calc(50vh - 20px);
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    resize: both;
+    overflow: hidden !important;
+    min-width: 500px;
+    min-height: 300px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+    background: white;
+    border: 1px solid #e1e8ed;
+    box-sizing: border-box;
+}
+
+.charts-grid.fullscreen .sensor-data-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 120px minmax(200px, 1fr) 150px;
+    gap: 15px;
+    height: calc(100% - 50px);
+}
+
+/* Mantener las proporciones durante el resize */
+.charts-grid.fullscreen .sensor-data-container {
+    transition: none;
+    will-change: contents;
+}
+
+/* Ajustes para el resize */
+.charts-grid.fullscreen .chart-container.resizing {
+    transition: none;
+    will-change: width, height;
+}
+
+.charts-grid.fullscreen .chart-container > * {
+    flex-shrink: 0;
+}
+
+.charts-grid.fullscreen .chart-container h3 {
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Prevenir interacciones durante el desplazamiento */
+.charts-grid.fullscreen .chart-container.moving {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Ajustar el manejo de transformaciones */
+.charts-grid.fullscreen .chart-container {
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Mejorar la visualización durante el resize */
+.charts-grid.fullscreen .chart-container.resizing::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+}
+
+/* Asegurar que el contenedor activo esté siempre arriba */
+.charts-grid.fullscreen .chart-container:hover {
+    z-index: 999;
+}
+
+/* Contenedor para el botón de restaurar todo */
+.restore-all-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.restore-all-button {
+    padding: 8px 16px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.restore-all-button:hover {
+    background: #2980b9;
+}
+
+/* Asegurar que el botón sea visible sobre el contenido */
+.restore-all-container {
+    transition: opacity 0.3s ease;
+}
+
+.charts-grid.fullscreen:hover .restore-all-container {
+    opacity: 1;
+}
+
+/* Ajustar la posición en modo responsive */
+@media (max-width: 768px) {
+    .restore-all-container {
+        position: sticky;
+        top: 10px;
+        right: auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+.sampling-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sampling-button.start {
+    background-color: #2ecc71;
+}
+
+.sampling-button.start:hover:not(.disabled) {
+    background-color: #27ae60;
+}
+
+.sampling-button.stop {
+    background-color: #e74c3c;
+}
+
+.sampling-button.stop:hover:not(.disabled) {
+    background-color: #c0392b;
+}
+
+.sampling-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sampling-indicator {
+    width: clamp(8px, 2vw, 12px);
+    height: clamp(8px, 2vw, 12px);
+    border-radius: 50%;
+    background-color: #e74c3c;
+    margin: 0 10px;
+}
+
+.sampling-indicator.active {
+    background-color: #2ecc71;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+.download-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #2980b9;
+}
+
+/* Ajustes para el encabezado */
+.dashboard-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard-content h1 {
+    font-size: clamp(1.5em, 4vw, 2.2em);
+    margin-bottom: 15px;
+}
+
+.dashboard-content p {
+    font-size: clamp(0.9em, 2vw, 1.1em);
+}
+
+/* Ajustes para el modo de redimensionamiento */
+.chart-container.resizing {
+    min-width: auto;
+    min-height: auto;
+}
+
+/* Botones de control de tamaño */
+.chart-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* Estilos específicos para el botón de pantalla completa */
+.fullscreen-button {
+    margin-left: auto !important;  /* Forzar alineación a la derecha */
+    background-color: #2c3e50 !important;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fullscreen-button:hover {
+    background-color: #34495e !important;
+}
+
+/* Ajustes responsivos para mantener el layout */
+@media (max-width: 768px) {
+    .time-controls {
+        flex-direction: row;  /* Mantener dirección horizontal */
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .fullscreen-button {
+        order: 2;  /* Asegurar que siempre esté al final */
+    }
+} 

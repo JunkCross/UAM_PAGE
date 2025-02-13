@@ -1,0 +1,177 @@
+.experimentos-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.experimento-item {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e1e8ed;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 400px; /* Altura máxima para la tarjeta */
+    overflow: hidden; /* Ocultar el contenido que se desborda */
+}
+
+.experimento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border: 1px solid #3498db;
+}
+
+.experimento-item h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3498db;
+    text-transform: capitalize;
+}
+
+.experimento-item p {
+    color: #666;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.experimento-item strong {
+    color: #34495e;
+    font-weight: 600;
+}
+
+.experimento-item .sensors-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.experimento-item .sensors-list li {
+    color: #666;
+    font-size: 0.95em;
+    padding: 3px 0;
+}
+
+.experimento-item .sensors-list li:before {
+    content: "•";
+    color: #3498db;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Estilos para el botón de eliminar */
+.experimento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+    background-color: #fde8e8;
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+.delete-btn svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Ajustar el estilo de la tarjeta */
+.experimento-card {
+    position: relative;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.experimento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el mensaje de confirmación */
+.confirmation-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+}
+
+/* Contenedor para la descripción con scroll */
+.experimento-description {
+    overflow-y: auto;
+    max-height: 100px; /* Altura máxima para la descripción */
+    margin: 10px 0;
+    padding-right: 10px; /* Espacio para el scrollbar */
+}
+
+/* Estilo para el texto de la descripción */
+.experimento-description p {
+    margin: 0;
+    line-height: 1.5;
+    word-wrap: break-word; /* Romper palabras largas */
+    overflow-wrap: break-word;
+}
+
+/* Personalizar el scrollbar de la descripción */
+.experimento-description::-webkit-scrollbar {
+    width: 6px;
+}
+
+.experimento-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.experimento-description::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.experimento-description::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Ajustar el espaciado del contenido */
+.experimento-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Mantener la información de fechas y sensores visible */
+.experimento-info {
+    margin-top: auto;
+} 

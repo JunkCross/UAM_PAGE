@@ -1,0 +1,183 @@
+/* Overlay del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+/* Contenedor del modal */
+.modal-content {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    width: 95%;
+    max-width: 1600px; /* Aumentado para más anchura */
+    height: auto;
+    min-height: 400px;
+    max-height: 70vh; /* Reducido para evitar scroll excesivo */
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del formulario */
+.modal-content form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Estilo para los labels */
+.modal-content label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Estilo para inputs y selects */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 95%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    margin-top: 0.5rem;
+}
+
+/* Estilo para el select múltiple */
+.modal-content select[multiple] {
+    height: 150px;
+}
+
+/* Estilo para el título */
+.modal-content h2 {
+    color: #2c3e50;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #eee;
+    text-align: center;
+}
+
+/* Contenedor de botones */
+.Buton {
+    grid-column: 1 / -1; /* Ocupa todas las columnas */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #eee;
+}
+
+/* Estilo de botones */
+.Buton button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Botón Crear experimento */
+.Buton button[type="submit"] {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.Buton button[type="submit"]:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* Botón Cancelar */
+.Buton button[type="button"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.Buton button[type="button"]:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Mensajes de error */
+.error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+    .modal-content {
+        max-width: 90%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content form {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        max-height: 85vh;
+    }
+
+    .Buton {
+        flex-direction: column;
+    }
+
+    .Buton button {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Scrollbar personalizado */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Ajustar el espacio entre grupos de formulario */
+.form-group {
+    margin-bottom: 0.8rem;
+}
+
+/* Ajustar el espacio para la descripción */
+.modal-content textarea {
+    min-height: 100px;
+    max-height: 200px;
+    resize: vertical;
+} 
