@@ -14,7 +14,7 @@ import {
 } from 'chart.js';
 import io from 'socket.io-client';
 import '../styles/Dashboard.css';
-import line from 'react-chartjs/lib/line';
+//import line from 'react-chartjs/lib/line';
 
 ChartJS.register(
     CategoryScale,
@@ -37,7 +37,7 @@ const ExperimentoDashboard = () => {
     const [resizeTimeout, setResizeTimeout] = useState(null);
     const socketRef = useRef();
     const MAX_DATA_POINTS = 50; // Número máximo de puntos a mostrar
-    const [maxDataPoints, setMaxDataPoints] = useState(50);
+    //const [maxDataPoints, setMaxDataPoints] = useState(50);
     const [isSampling, setIsSampling] = useState(false);
     const [samplingStartTime, setSamplingStartTime] = useState(null);
     const [samplingEndTime, setSamplingEndTime] = useState(null);
@@ -181,9 +181,9 @@ const ExperimentoDashboard = () => {
                                     (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
                                 );
 
-                                if (updatedData[sensorId][metricType].length > maxDataPoints) {
+                                if (updatedData[sensorId][metricType].length > MAX_DATA_POINTS) {
                                     updatedData[sensorId][metricType] = 
-                                        updatedData[sensorId][metricType].slice(-maxDataPoints);
+                                        updatedData[sensorId][metricType].slice(-MAX_DATA_POINTS);
                                 }
                             }
                         });

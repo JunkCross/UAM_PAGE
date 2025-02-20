@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    FaMicrochip, FaBars, FaTh, FaTachometerAlt, FaFileExport, FaFileCsv
+    FaMicrochip, FaBars, FaTh, FaFileExport, FaFileCsv
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 

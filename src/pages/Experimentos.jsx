@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Para hacer solicitudes HTTP
 import { FaSearch, FaTrash } from "react-icons/fa";
 import NuevoExperimentoModal from '../components/NuevoExperimentoModal.jsx';  // Importamos el componente modal
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Experimentos.css';
 
 const Experimentos = () => {

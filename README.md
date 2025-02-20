@@ -5,10 +5,9 @@ Este proyecto es una aplicación web para el monitoreo y gestión de sensores en
 ## Características
 
 - 🔍 Monitoreo en tiempo real de sensores
-- 📊 Visualización de datos con gráficas interactivas
+- 📊 Visualización de datos con gráficas
 - 📁 Gestión de experimentos
 - 📥 Exportación de datos a CSV
-- 🔐 Sistema de autenticación
 - 📱 Diseño responsivo
 
 ## Tecnologías Utilizadas
@@ -48,17 +47,21 @@ cd UAM_PAGE
 2. Configurar el entorno virtual de Python:
 
 ```bash
+cd api
 python -m venv venv
+
 En Windows: venv\Scripts\activate
-source venv/bin/activate 
+En Linux:   source venv/bin/activate 
 ```
 
 3. Instalar dependencias del backend:
 
 ```bash
 cd api
+-Instalar dependencias:
 pip install -r requirements.txt
 
+-Actualizar dependencias:
 pip freeze > requirements.txt
 ```
 
@@ -69,10 +72,6 @@ cd ../
 npm install
 ```
 
-5. Configurar variables de entorno:
-   - Crear archivo `venv` en la carpeta `api`
-   
-   Ejemplo de `venv` para el backend:
 
 ## Ejecución
 
@@ -90,7 +89,12 @@ cd ../
 npm start
 ```
 
-La aplicación estará disponible en `http://localhost:3000`
+La aplicación estará disponible en `http://localhost:3000` o `http://192.168.56.1:3001/`
+
+## Posibles modificaciones:
+
+En el archivo `package.json` modificar la sección `proxy` a la de su backend
+
 
 ## Estructura del Proyecto
 
@@ -103,6 +107,8 @@ La aplicación estará disponible en `http://localhost:3000`
 │ ├── components/
 │ ├── pages/
 │ ├── styles/
+│ ├── App.js
+│ ├── App.css
 │ └── ...
 ├── public/
 ├── package.json
@@ -119,7 +125,6 @@ La aplicación estará disponible en `http://localhost:3000`
 2. **Monitorear Sensores**
    - Seleccionar un experimento de la lista
    - Ver gráficas en tiempo real
-   - Ajustar rangos de tiempo según necesidad
 
 3. **Exportar Datos**
    - Ir a la sección "Archivos CSV"
