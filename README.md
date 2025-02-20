@@ -93,8 +93,7 @@ La aplicación estará disponible en `http://localhost:3000` o `http://192.168.5
 
 ## Posibles modificaciones:
 
-En el archivo `package.json` modificar la sección `proxy` a la de su backend
-
+En el archivo `package.json` modificar la sección `proxy` a la de su backend y en el archivo src/components/ExperimentoDashboard.js modificar la sección `socketRef.current = io('http://192.168.0.39:5000');` por la de su backend.
 
 ## Estructura del Proyecto
 
